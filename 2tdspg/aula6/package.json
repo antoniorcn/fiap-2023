@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "name": "aula6",
+  "version": "1.0.0",
+  "main": "temperatura3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node temperatura3.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
