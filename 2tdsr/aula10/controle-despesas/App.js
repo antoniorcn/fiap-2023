@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, ImageBackground, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ImageBackground, Pressable, 
+  TouchableHighlight, TouchableOpacity,
+  ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import imgCoins from './assets/coins.jpg';
 
 const estilos = StyleSheet.create({
@@ -12,10 +14,7 @@ const estilos = StyleSheet.create({
 class DespesaFormulario extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {descricao: "", valor: "", pagamento: "", lista: [
-      {descricao: "Condominio", valor: "600.00", pagamento: "10/04/2023"},
-      {descricao: "NetFlix", valor: "57.00", pagamento: "15/04/2023"},
-    ]}
+    this.state = {descricao: "", valor: "", pagamento: "", lista: []}
   }
 
   render() {
@@ -52,12 +51,18 @@ class DespesaFormulario extends React.Component {
                 this.setState({pagamento: txt})
               }}
               placeholder="Data do Pagamento"/>
-          <Button title="Salvar" color="green" 
-            onPress={()=>{
-              const obj = {descricao: this.state.descricao, valor: this.state.valor,
+          <TouchableHighlight onPress={()=>{
+              const obj = {descricao: this.state.descricao, 
+                valor: this.state.valor,
                 pagamento: this.state.pagamento}
               this.setState({lista: [...this.state.lista, obj]})
-            }}/>
+              this.setState({descricao: "", valor: "", pagamento: ""})
+          }}>
+            <View style={{width: "80%", backgroundColor: "green",
+          alignSelf: "center", padding: 10, alignItems: "center"}}>
+              <Text style={{color: "white", fontSize: 20}}>SALVAR</Text>
+            </View>
+          </TouchableHighlight>
         </View>
         <ScrollView style={{flex: 1}}>
               {listaElementosVisuais}
