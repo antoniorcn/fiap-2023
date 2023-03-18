@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ImageBackground, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import imgCoins from './assets/coins.jpg';
 
 const estilos = StyleSheet.create({
@@ -12,27 +12,56 @@ const estilos = StyleSheet.create({
 class DespesaFormulario extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {descricao: "Condominio", valor: "", pagamento: ""}
+    this.state = {descricao: "", valor: "", pagamento: "", lista: [
+      {descricao: "Condominio", valor: "600.00", pagamento: "10/04/2023"},
+      {descricao: "NetFlix", valor: "57.00", pagamento: "15/04/2023"},
+    ]}
   }
 
   render() {
+
+    const listaElementosVisuais =
+          this.state.lista.map( (obj, idx) => {
+            return (
+              <View key={idx}>
+                <Text>{obj.descricao}</Text>
+                <Text>{obj.valor}</Text>
+                <Text>{obj.pagamento}</Text>
+              </View>
+            );
+          });
+
     return (
       <View style={{flex: 1}}>
         <View style={{flex: 1}}>
           <TextInput style={estilos.input}
               value={this.state.descricao}
+              onChangeText={(txt)=>{
+                this.setState({descricao: txt})
+              }}
               placeholder="Descrição da Despesa"/>
           <TextInput style={estilos.input}
               value={this.state.valor}
+              onChangeText={(txt)=> {
+                this.setState({valor: txt})
+              }}
               placeholder="Valor"/>
           <TextInput style={estilos.input}
               value={this.state.pagamento}
+              onChangeText={(txt)=>{
+                this.setState({pagamento: txt})
+              }}
               placeholder="Data do Pagamento"/>
-          <Button title="Salvar" color="green"/>
+          <Button title="Salvar" color="green" 
+            onPress={()=>{
+              const obj = {descricao: this.state.descricao, valor: this.state.valor,
+                pagamento: this.state.pagamento}
+              this.setState({lista: [...this.state.lista, obj]})
+            }}/>
         </View>
-        <View style={{flex: 1}}>
-
-        </View>
+        <ScrollView style={{flex: 1}}>
+              {listaElementosVisuais}
+        </ScrollView>
       </View>
     );
   }
