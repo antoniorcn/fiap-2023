@@ -70,10 +70,11 @@ class ProdutoFormulario extends React.Component {
             ()=> {
               const obj = {nome: this.state.nome, quantidade: this.state.quantidade,
                 preco: this.state.preco};
+                
               this.setState( {lista: [...this.state.lista, obj]} );
             }}/>
         </View>
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}> 
               {listaVisuais}
         </ScrollView>
       </View>
