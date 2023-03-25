@@ -28,16 +28,19 @@ class CheckPointFormulario extends React.Component {
       <View style={{flex: 1}}>
         <Text>Nome da materia:</Text>
         <TextInput value={this.state.materia} 
+          style={{backgroundColor: this.props.corInput}}
           onChangeText={(txt)=>{
             this.setState({materia: txt})
           }}/>
         <Text>Numero do Checkpoint:</Text>
         <TextInput value={this.state.numCheck}
+          style={{backgroundColor: this.props.corInput}}
           onChangeText={(txt)=>{
             this.setState({numCheck: txt})
           }}/>
         <Text>Nota:</Text>
         <TextInput value={this.state.nota}
+          style={{backgroundColor: this.props.corInput}}
           onChangeText={(txt)=>{
             this.setState({nota: txt})
           }}/>
@@ -63,6 +66,6 @@ export default () =>
 
     </ImageBackground>
     <View style={{flex: 1}}>
-      <CheckPointFormulario/>
+      <CheckPointFormulario corInput="lightpink"/>
     </View>
   </View>
