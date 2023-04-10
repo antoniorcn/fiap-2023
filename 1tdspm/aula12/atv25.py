@@ -18,3 +18,17 @@ notas.append(gs)
 
 print("Lista de Notas: ")
 print(notas)
+
+
+
+
+
+# soma = 0
+# for n in notas:
+#     soma = soma + n
+# print("Soma: ", soma)
+
+media = soma / 9.0
+
+print("Media: ", media)
+
