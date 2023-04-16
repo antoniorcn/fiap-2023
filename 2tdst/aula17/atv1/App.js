@@ -29,7 +29,11 @@ const HamburguerForm  = () => {
   const [listaFrango, setListaFrango] = useState([]);
 
   useEffect(
-    ()=>{console.log("Quantidade: ", qtd)}, []
+    ()=>{
+      if (parseInt(qtd) > 10) { 
+        setQtd("10");
+      }
+    }, [qtd]
   )
 
   return (
