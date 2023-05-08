@@ -47,8 +47,9 @@ while True:
           break
   elif opcao == 'L':
     print("{:<40}{:^10}{:>30}".format("Nome", "Telefone", "Email"))
-    for c in lista:
-      print("{:<40}{:^10}{:>30}".format(c["nome"], c["telefone"], c["email"]))
+    for contato in lista:
+      print("{:<40}{:^10}{:>30}".format(contato["nome"], 
+                                        contato["telefone"], contato["email"]))
     print("\n\n\n")
   elif opcao == 'S':
     break
