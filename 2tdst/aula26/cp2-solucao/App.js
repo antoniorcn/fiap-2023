@@ -70,8 +70,8 @@ export default function App() {
 
   const inserir = ( o ) => {
     const novaLista = [...lista, o];
-    setLista(novaLista)
-    AsyncStorage.setItem("LISTA", novaLista)
+    setLista(novaLista);
+    AsyncStorage.setItem("LISTA", JSON.stringify(novaLista));
   }
 
 
