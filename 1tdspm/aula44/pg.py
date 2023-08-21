@@ -12,9 +12,12 @@
 
 def pg( numero, q ):
     if numero <= 1:
+        print("", 1, end="")
         return 1
     else:
-        return q * pg(numero - 1, q)
+        res = q * pg(numero - 1, q)
+        print("", res, end="")
+        return res
 
 print ("Programa para calculo de Progressão Geometrica")
 print ("Digite o termo para calculo da PG: ")
@@ -22,5 +25,5 @@ termo = int(input())
 print ("Digite a razão para o calculo da PG: ")
 razao = int(input())
 resultado = pg(termo, razao)
-print (f"PG do {termo}º elemento com a q={razao} é : ", resultado)
+print (f"\nPG do {termo}º elemento com a q={razao} é : ", resultado)
 print ("Fim do programa")
