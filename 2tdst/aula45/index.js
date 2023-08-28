@@ -61,7 +61,7 @@ app.route("/").get( filtroJwt , (request, response)=> {
 });
 
 
-app.route("/").post((request, response) => { 
+app.route("/").post( filtroJwt, (request, response) => { 
     const obj = request.body;
     console.log("Body: ", request.body);
     lista.push(obj);
