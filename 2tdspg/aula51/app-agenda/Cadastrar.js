@@ -4,11 +4,24 @@ import { Contexto } from './contexto';
 
 
 const Cadastrar = () => { 
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [tel, setTel] = useState("");
-  
+
     const ctx = useContext(Contexto);
+
+    let idDefault = null;
+    let nomeDefault = "";
+    let emailDefault = "";
+    let telDefault = "";
+    if (ctx.alterarDados) {
+        idDefault = ctx.alterarDados.id;
+        nomeDefault = ctx.alterarDados.nome;
+        emailDefault = ctx.alterarDados.email;
+        telDefault = ctx.alterarDados.tel;
+    }
+    
+    const [id, setId] = useState(idDefault);
+    const [nome, setNome] = useState(nomeDefault);
+    const [email, setEmail] = useState(emailDefault);
+    const [tel, setTel] = useState(telDefault);
   
     return (
       <View style={{flex: 1}}>
@@ -21,6 +34,9 @@ const Cadastrar = () => {
         <TextInput value={tel} onChangeText={setTel}/>
         <Button title="Gravar" onPress={()=>{
           const obj = {nome, email, tel}
+          if (idDefault) { 
+            obj["id"] = idDefault;
+          }
           ctx.salvar( obj );
         }}/>
       </View>

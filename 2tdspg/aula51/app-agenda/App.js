@@ -1,7 +1,7 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { Contexto } from './contexto';
 import { Listar } from './Listar';
 import { Cadastrar } from './Cadastrar';
@@ -32,14 +32,39 @@ const Principal = () => {
 
 export default function App() {
   const [lista, setLista] = useState([]);
-
+  const [alterarDados, setAlterarDados] = useState(null);
+  const contador = useRef(1);
   const salvar = ( objContato ) => { 
-    setLista([...lista, objContato]);
+    if (objContato.id) { 
+      const novaLista = lista.filter( (item, indice) => {
+        if (item.id !== objContato.id) { 
+          return objContato;
+        } else { 
+          return item;
+        }
+      });
+    } else { 
+      objContato["id"] = contador.current++;
+      setLista([...lista, objContato]);
+      setAlterarDados(null);
+    }
+  }
+
+  const editar = ( objContato ) => { 
+    setAlterarDados( objContato );
+  }
+
+  const remover = ( objContato ) => { 
+    const novaLista = lista.filter( (item, indice) => {
+      return item.nome !== objContato.nome
+    });
+
+    setLista( novaLista );
   }
 
   return (
     <Contexto.Provider value={{
-      lista, setLista, salvar
+      lista, setLista, salvar, remover, editar, alterarDados
     }}>
       <View style={{flex: 1}}>
         <Text>Agenda de Contatos</Text>
