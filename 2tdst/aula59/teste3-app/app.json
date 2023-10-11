@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "teste3-app",
+    "slug": "teste3-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [ "expo-notifications",
+        {
+          "icon": "./local/assets/snack-icon.png",
+          "color": "#0000ff",
+          "sounds": [
+            "./local/assets/notification-sound.wav",
+            "./local/assets/notification-sound-other.wav"
+          ]
+        }
+      ]
+    ]
+  },
+  "name": "teste3-app"
+}
