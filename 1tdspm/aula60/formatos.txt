@@ -1,0 +1,38 @@
+        ##Formato XML
+        <contatos>
+            <contato>
+                <nome>João Silva</nome>
+                <telefone>(11) 1111-1111</telefone>
+                <email>joao@teste.com</email>
+            </contato>
+            <contato>
+                <nome>João Silva</nome>
+                <telefone>(11) 1111-1111</telefone>
+                <email>joao@teste.com</email>
+            </contato>
+            <contato>
+                <nome>João Silva</nome>
+                <telefone>(11) 1111-1111</telefone>
+                <email>joao@teste.com</email>
+            </contato>
+        </contatos>
+
+        ##Formato CSV
+        Nome, Telefone, email
+        João Silva, (11) 1111-1111, joao@teste.com
+        João Silva, (11) 1111-1111, joao@teste.com
+        João Silva, (11) 1111-1111, joao@teste.com
+
+        ##Formato JSON
+        [
+            {"nome": "Silva, João", "telefone": "(11) 1111-1111", "email": "joao@teste.com"},
+            {"nome": "Maria Silva", "telefone": "(11) 1111-1111", "email": "maria@teste.com"},
+            {"nome": "João Silva", "telefone": "(11) 1111-1111", "email": "joao@teste.com"},
+        ]
+
+        ## YAML
+        contatos:
+            contato:
+                nome: João Silva
+                telefone: (11) 1111-1111
+                email: joao@teste.com

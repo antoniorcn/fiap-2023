@@ -9,17 +9,35 @@ lista = [
 
 class MeuHandler( BaseHTTPRequestHandler ):
     def do_GET(self):
+        print("Path: ", self.path)
+        print("Command: ", self.command)
+        print("Headers: ", self.headers)
         self.send_response(200, "Ok")
         self.send_header("content-type", "text/html")
         self.end_headers()
         self.wfile.write(b"<html>")
-        self.wfile.write(b"<h1>Ola bem vindo</h1>")
-        self.wfile.write(b"<h2>ao servidor feito em python</h2>")
+        self.wfile.write(b"<h1>Contatos</h1>")
+        self.wfile.write(b"<ul>")
+        
+        for contato in lista:
+            self.wfile.write(bytes("""
+                                <li>{}</li>
+                                <li>{}</li>
+                                <li>{}</li>
+                             """.format(contato["nome"], contato["telefone"], contato["email"]), "UTF-8"))
+        self.wfile.write(b"</ul>")
         self.wfile.write(b"</html>")
-        # print("Path: ", self.path)
-        # print("Command: ", self.command)
-        # request = self.rfile.readlines()
-        # print("Headers: ", self.headers)
+
+    def do_POST(self):
+        print("Path: ", self.path)
+        print("Command: ", self.command)
+        print("Headers: ", self.headers)
+        self.send_response(200, "Ok")
+        self.send_header("content-type", "text/html")
+        self.end_headers()
+        content_len = int(self.headers.get('Content-Length'))
+        post_body = self.rfile.read(content_len)
+        print("Body: ", post_body)
 
 print("HTTP Server")
 http_server = HTTPServer( ('', 80), MeuHandler )
