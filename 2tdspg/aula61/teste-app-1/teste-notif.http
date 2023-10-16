@@ -1,0 +1,8 @@
+POST https://exp.host/--/api/v2/push/send HTTP/1.1
+content-type: application/json
+
+{
+    "to": "ExponentPushToken[qu5GKrAUkg79-hIxZFJGnQ]",
+    "title": "Teste App 1 - Push Notification",
+    "body": "Corpo do teste de app 1 push notification"
+}
