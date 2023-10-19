@@ -1,0 +1,35 @@
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class MeuHandler( BaseHTTPRequestHandler ):
+    def do_GET(self):
+            self.send_response(200, "Ok")
+            self.send_header("content-type", "text/html")
+            self.end_headers()
+            print("Path: ", self.path)
+            pagina_python = """
+                <html>
+                    <body>
+                        <h1>Hello World - Python</h1>
+                        <img style="width: 70%; height: 50%" src="data:image/jpeg;base64,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"/>
+                    </body>
+                </html>
+            """
+
+            pagina_java = """
+                <html>
+                    <body>
+                        <h1>Hello World - Java</h1>
+                        <img style="width: 70%; height: 50%" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-5po5hw5jS53IkoxcBx9L56PWzwdAjtEYAcJ89iHVg&s"/>
+                    </body>
+                </html>
+            """
+            if "java" in self.path:
+                self.wfile.write(bytes(pagina_java, "utf-8"))
+            else:
+                self.wfile.write(bytes(pagina_python, "utf-8"))
+
+print("Iniciando servidor")
+servidor = HTTPServer(("10.3.55.100", 80), MeuHandler)
+print("servidor iniciado - aguardando navegador")
+servidor.serve_forever()
+print("Navegador mandou requisição")
